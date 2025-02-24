@@ -152,6 +152,7 @@ const menuToggle = document.querySelector('.menu-toggle');
 const header = document.querySelector('header');
 
 if (menuToggle) {
+    console.log('menuToggle');
     menuToggle.addEventListener('click', () => {
         console.log('click');
         header.classList.toggle('active');
