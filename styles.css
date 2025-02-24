@@ -1,5 +1,5 @@
 body {
-    font-family: 'Poppins', sans-serif;
+    font-family: 'Muli', sans-serif;
     margin: 0;
     padding: 0;
     background: linear-gradient(135deg, #0D1B2A, #1A2D3F, #334155);
@@ -16,6 +16,7 @@ body {
     100% { background-position: 0% 50%; }
 }
 
+/* Применяем стили для секций */
 header, footer, .hero, .about, .how-to-buy, .contacts, .chart-section {
     background: rgba(0, 0, 0, 0.7);
     backdrop-filter: blur(10px);
@@ -43,6 +44,7 @@ nav ul {
     padding: 0;
     display: flex;
     gap: 20px;
+    
 }
 
 nav a, .buy-button {
@@ -63,10 +65,6 @@ nav a, .buy-button {
 .buy-button:hover {
     transform: scale(1.05) rotate(2deg);
     box-shadow: 0 0 25px rgba(0, 255, 204, 0.5);
-}
-
-.buy-button:focus, nav a:focus {
-    outline: 2px solid #00FFCC;
 }
 
 .hero {
@@ -99,7 +97,6 @@ nav a, .buy-button {
     height: 400px !important;
     display: block;
     border-radius: 12px;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
 }
 
 .about, .how-to-buy, .contacts, .chart-section {
@@ -158,38 +155,54 @@ nav a, .buy-button {
 footer {
     padding: 20px;
     margin-top: auto;
+    border-bottom: none;
+}
+
+h1, h2, p {
+    font-family: 'Muli', sans-serif;
+    letter-spacing: 0.05rem;
 }
 
 h1 {
-    font-family: 'Poppins', sans-serif;
     font-size: 48px;
     font-weight: 700;
-    letter-spacing: 0.05rem;
 }
 
 h2 {
-    font-family: 'Poppins', sans-serif;
     font-size: 32px;
     font-weight: 700;
-    letter-spacing: 0.05rem;
 }
 
 p {
-    font-family: 'Poppins', sans-serif;
     font-size: 18px;
     font-weight: 400;
     line-height: 1.6;
 }
 
+/* Стили для кнопки мобильного меню */
+.menu-toggle {
+    display: none;
+    background: none;
+    border: none;
+    color: #00FFCC;
+    font-size: 24px;
+    cursor: pointer;
+}
+
 @media (max-width: 768px) {
+    h1 { font-size: 32px; }
+    h2 { font-size: 24px; }
+    p { font-size: 16px; }
+    
     header {
         flex-direction: column;
         padding: 10px;
     }
-
+    
     nav ul {
         flex-direction: column;
         gap: 10px;
+        
     }
 
     .canvas-container {
@@ -202,18 +215,6 @@ p {
         height: 300px !important;
     }
 
-    h1 {
-        font-size: 32px;
-    }
-
-    h2 {
-        font-size: 24px;
-    }
-
-    p {
-        font-size: 16px;
-    }
-
     .hero, .about, .how-to-buy, .contacts, .chart-section {
         padding: 40px 10px;
     }
@@ -221,4 +222,38 @@ p {
     .buy-button {
         padding: 10px 20px;
     }
+
+    /* Отображаем кнопку меню */
+    .menu-toggle {
+        display: block;
+    }
+
+    /* По умолчанию скрываем навигацию и кнопку "Купить IF" */
+    header nav,
+    header .buy-button {
+        display: none;
+    }
+
+    /* При активном состоянии header показываем навигацию и кнопку "Купить IF" */
+    header.active nav,
+    header.active .buy-button {
+        display: block;
+        margin-top: 10px;
+    }
+
+    /* Вывод навигационного списка в столбик */
+    header.active nav ul {
+        flex-direction: column;
+        gap: 10px;
+    }
+}
+
+/* Добавляем нижний отступ для основного контейнера, чтобы последний блок не обрезался */
+main {
+    padding-bottom: 120px;
+}
+
+/* Убираем нижнюю границу у последнего раздела внутри main */
+main section:last-child {
+    border-bottom: none;
 }

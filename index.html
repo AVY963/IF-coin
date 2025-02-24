@@ -1,98 +1,117 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>IF - Мемкоин будущего</title>
-    <link rel="stylesheet" href="styles.css">
-    <link rel="icon" type="image/png" href="favicon.png">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js" async></script>
-    <script src="https://cdn.jsdelivr.net/npm/three/examples/js/loaders/GLTFLoader.js" async></script>
-    <script src="https://cdn.jsdelivr.net/npm/three/examples/js/controls/OrbitControls.js" async></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>IF - Мемкоин будущего</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="icon" type="image/png" href="favicon.png">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Muli:wght@400;500;600;700&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js" async></script>
+  <script src="https://cdn.jsdelivr.net/npm/three/examples/js/loaders/GLTFLoader.js" async></script>
+  <script src="https://cdn.jsdelivr.net/npm/three/examples/js/controls/OrbitControls.js" async></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
 </head>
 <body>
-    <header>
-        <div class="logo">IF</div>
-        <nav>
-            <ul>
-                <li><a href="#about" aria-label="Перейти к разделу О монете">О монете</a></li>
-                <li><a href="#how-to-buy" aria-label="Перейти к разделу Как купить">Как купить</a></li>
-                <li><a href="#contacts" aria-label="Перейти к разделу Контакты">Контакты</a></li>
-            </ul>
-        </nav>
-        <a href="#" class="buy-button" aria-label="Купить монету IF">Купить IF</a>
-    </header>
-
+  <header>
+    <!-- Левый блок: логотип -->
+    <div class="header-left">
+      <div class="logo">IF</div>
+    </div>
+    <!-- Центральный блок: навигация -->
+    <div class="header-center">
+      <nav>
+        <ul>
+          <li><a href="#about" aria-label="Перейти к разделу О монете">О монете</a></li>
+          <li><a href="#how-to-buy" aria-label="Перейти к разделу Как купить">Как купить</a></li>
+          <li><a href="#contacts" aria-label="Перейти к разделу Контакты">Контакты</a></li>
+        </ul>
+      </nav>
+    </div>
+    <!-- Правый блок: кнопка "Купить IF" и кнопка меню для мобильных устройств -->
+    <div class="header-right">
+      <a href="#" class="buy-button" aria-label="Купить монету IF">Купить IF</a>
+      <button class="menu-toggle" aria-label="Открыть меню">
+        <i class="fas fa-bars"></i>
+      </button>
+    </div>
+  </header>
+  
+  <main>
     <section class="hero">
-        <h1 style="color: #00FFCC;">IF — мемкоин будущего!</h1>
-        <p class="subtitle">Присоединяйся к революции крипто-мемов</p>
-        <div class="canvas-container">
-            <canvas id="three-canvas"></canvas>
-        </div>
-        <a href="https://app.ston.fi/swap?chartVisible=false&tt=EQDfefbhN-qmZqH5UZgFQ7GrrRex6ALMgPFImfADHwwDblj6" 
-           target="_blank" 
-           class="buy-button" 
-           aria-label="Купить монету IF">Купить IF</a>
+      <h1 style="color: #00FFCC;">IF — мемкоин будущего!</h1>
+      <p class="subtitle">ВЫ ГОТОВЫ К БОЛЬШОЙ ИГРЕ?</p>
+      <div class="canvas-container">
+        <canvas id="three-canvas"></canvas>
+      </div>
+      <a href="https://app.ston.fi/swap?chartVisible=false&tt=EQDfefbhN-qmZqH5UZgFQ7GrrRex6ALMgPFImfADHwwDblj6" 
+         target="_blank" 
+         class="buy-button" 
+         aria-label="Купить монету IF">Купить IF</a>
     </section>
 
     <section id="chart-section" class="chart-section">
-        <h2>График цен IF</h2>
-        <div class="gecko-iframe-container">
-            <iframe 
-                id="geckoterminal-embed"
-                title="График цен IF на GeckoTerminal" 
-                src="https://www.geckoterminal.com/ton/pools/EQBqlVcH-_uMyAG3kg6kZuXTz01TX3Duc6BjJA-9_GLRugrU?embed=1&info=1&swaps=1&grayscale=0&light_chart=0&chart_type=price&resolution=15m" 
-                frameborder="0" 
-                allow="clipboard-write" 
-                allowfullscreen>
-            </iframe>
-        </div>
+      <h2>График цен IF</h2>
+      <div class="gecko-iframe-container">
+        <iframe 
+          id="geckoterminal-embed"
+          title="График цен IF на GeckoTerminal" 
+          src="https://www.geckoterminal.com/ton/pools/EQBqlVcH-_uMyAG3kg6kZuXTz01TX3Duc6BjJA-9_GLRugrU?embed=1&info=1&swaps=1&grayscale=0&light_chart=0&chart_type=price&resolution=15m" 
+          frameborder="0" 
+          allow="clipboard-write" 
+          allowfullscreen>
+        </iframe>
+      </div>
     </section>
 
     <section id="about" class="about">
-        <h2>Что такое IF?</h2>
-        <p>IF — это крипто-монета, созданная для сообщества. Мы объединяем мемы, технологии и финансы, чтобы создать что-то уникальное.</p>
+      <h2>Что такое IF?</h2>
+      <p>IF — это крипто-монета, созданная для сообщества. Мы объединяем мемы, технологии и финансы, чтобы создать что-то уникальное.</p>
     </section>
 
     <section id="how-to-buy" class="how-to-buy">
-        <h2>Как купить IF?</h2>
-        <ol>
-            <li><i class="fas fa-user-plus"></i> Зарегистрируйся на бирже</li>
-            <li><i class="fas fa-wallet"></i> Пополни баланс</li>
-            <li><i class="fas fa-exchange-alt"></i> Купи IF</li>
-        </ol>
-        <a href="https://app.ston.fi/swap?chartVisible=false&tt=EQDfefbhN-qmZqH5UZgFQ7GrrRex6ALMgPFImfADHwwDblj6" 
-           class="buy-button" 
-           target="_blank" 
-           rel="noopener noreferrer" 
-           aria-label="Купить монету IF">Купить IF</a>
+      <h2>Как купить IF?</h2>
+      <ol>
+        <li><i class="fas fa-user-plus"></i> Зарегистрируйся на бирже</li>
+        <li><i class="fas fa-wallet"></i> Пополни баланс</li>
+        <li><i class="fas fa-exchange-alt"></i> Купи IF</li>
+      </ol>
+      <a href="https://app.ston.fi/swap?chartVisible=false&tt=EQDfefbhN-qmZqH5UZgFQ7GrrRex6ALMgPFImfADHwwDblj6" 
+         class="buy-button" 
+         target="_blank" 
+         rel="noopener noreferrer" 
+         aria-label="Купить монету IF">Купить IF</a>
     </section>
 
     <section id="contacts" class="contacts">
-        <h2>Свяжись с нами</h2>
-        <div class="social-links">
-            <a href="https://t.me/osokinidis" class="tg-button" target="_blank" rel="noopener noreferrer" aria-label="Telegram IF">
-                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.894 8.221l-1.97 9.28c-.145.658-.537.818-1.084.508l-3-2.21-1.447 1.394c-.16.16-.295.295-.605.295l.213-3.05 5.56-5.023c.242-.213-.054-.333-.373-.121l-6.87 4.326-2.962-.924c-.643-.203-.658-.643.136-.953l11.57-4.458c.538-.196 1.006.128.832.941z" fill="#00FFCC"/>
-                </svg>
-            </a>
-        </div>
+      <h2>Свяжись с нами</h2>
+      <div class="social-links">
+        <a href="https://t.me/osokinidis" class="tg-button" target="_blank" rel="noopener noreferrer" aria-label="Telegram IF">
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.894 8.221l-1.97 9.28c-.145.658-.537.818-1.084.508l-3-2.21-1.447 1.394c-.16.16-.295.295-.605.295l.213-3.05 5.56-5.023c.242-.213-.054-.333-.373-.121l-6.87 4.326-2.962-.924c-.643-.203-.658-.643.136-.953l11.57-4.458c.538-.196 1.006.128.832.941z" fill="#00FFCC"/>
+          </svg>
+        </a>
+      </div>
     </section>
+  </main>
+  
+  <footer>
+    <div class="logo">IF</div>
+    <nav>
+      <ul>
+        <li><a href="#about" aria-label="Перейти к разделу О монете">О монете</a></li>
+        <li><a href="#how-to-buy" aria-label="Перейти к разделу Как купить">Как купить</a></li>
+        <li><a href="#contacts" aria-label="Перейти к разделу Контакты">Контакты</a></li>
+      </ul>
+    </nav>
+    <p>&copy; 2025 IF. Все права защищены.</p>
+  </footer>
 
-    <footer>
-        <div class="logo">IF</div>
-        <nav>
-            <ul>
-                <li><a href="#about" aria-label="Перейти к разделу О монете">О монете</a></li>
-                <li><a href="#how-to-buy" aria-label="Перейти к разделу Как купить">Как купить</a></li>
-                <li><a href="#contacts" aria-label="Перейти к разделу Контакты">Контакты</a></li>
-            </ul>
-        </nav>
-        <p>&copy; 2025 IF. Все права защищены.</p>
-    </footer>
-
-    <script src="script.js"></script>
+  <script src="script.js"></script>
 </body>
 </html>
