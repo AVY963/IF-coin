@@ -113,8 +113,8 @@ gsap.utils.toArray('.about, .how-to-buy, .contacts, .chart-section').forEach(sec
           ease: 'power2.out',
           scrollTrigger: {
               trigger: section,
-              start: 'top center',
-              end: 'bottom center',
+              start: 'top 95%',
+              end: 'top 65%',
               scrub: true
           }
         }
@@ -135,7 +135,6 @@ document.querySelectorAll('header nav a, footer nav a').forEach(link => {
       const targetId = this.getAttribute('href').substring(1);
       const targetElem = document.getElementById(targetId);
       if (targetElem) {
-          // Вычисляем отступ так, чтобы блок оказался в центре окна
           const rect = targetElem.getBoundingClientRect();
           const offset = window.innerHeight / 2 - rect.height / 2;
           const targetPosition = targetElem.getBoundingClientRect().top + window.pageYOffset;
@@ -148,7 +147,7 @@ document.querySelectorAll('header nav a, footer nav a').forEach(link => {
   });
 });
 
-// Добавление функционала для мобильного меню
+// Функционал для мобильного меню: переключаем класс active у header
 const menuToggle = document.querySelector('.menu-toggle');
 const header = document.querySelector('header');
 

@@ -8,66 +8,84 @@ body {
     color: #fff;
     text-align: center;
     min-height: 100vh;
-}
-
-@keyframes gradientBG {
+  }
+  
+  @keyframes gradientBG {
     0% { background-position: 0% 50%; }
     50% { background-position: 100% 50%; }
     100% { background-position: 0% 50%; }
-}
-
-/* Применяем стили для секций */
-header, footer, .hero, .about, .how-to-buy, .contacts, .chart-section {
+  }
+  
+  /* Секции */
+  header, footer, .hero, .about, .how-to-buy, .contacts, .chart-section {
     background: rgba(0, 0, 0, 0.7);
     backdrop-filter: blur(10px);
     border-bottom: 1px solid rgba(0, 255, 204, 0.1);
-}
-
-header {
-    display: flex;
-    justify-content: space-between;
+  }
+  
+  /* Header desktop: используем grid с тремя колонками */
+  header {
+    display: grid;
+    grid-template-columns: auto 1fr auto;
     align-items: center;
     padding: 20px;
     position: sticky;
     top: 0;
     z-index: 100;
-}
-
-.logo {
+  }
+  
+  .header-left {
+    display: flex;
+    align-items: center;
+  }
+  
+  .header-center {
+    text-align: center;
+  }
+  
+  .header-right {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 20px;
+  }
+  
+  .logo {
     font-size: 24px;
     font-weight: 700;
     text-shadow: 0 0 10px rgba(0, 255, 204, 0.3);
-}
-
-nav ul {
+  }
+  
+  nav ul {
     list-style: none;
     padding: 0;
+    margin: 0;
     display: flex;
     gap: 20px;
-    
-}
-
-nav a, .buy-button {
+  }
+  
+  nav a,
+  .buy-button {
     color: #00FFCC;
     text-decoration: none;
     font-weight: 600;
-}
-
-.buy-button {
+  }
+  
+  .buy-button {
     background: linear-gradient(45deg, #00FFCC, #00CCFF);
     padding: 12px 24px;
     border-radius: 8px;
     color: #000;
     transition: all 0.3s ease;
     box-shadow: 0 4px 15px rgba(0, 255, 204, 0.2);
-}
-
-.buy-button:hover {
+  }
+  
+  .buy-button:hover {
     transform: scale(1.05) rotate(2deg);
     box-shadow: 0 0 25px rgba(0, 255, 204, 0.5);
-}
-
-.hero {
+  }
+  
+  .hero {
     padding: 80px 20px;
     display: flex;
     flex-direction: column;
@@ -75,44 +93,46 @@ nav a, .buy-button {
     justify-content: center;
     background: linear-gradient(45deg, rgba(13, 27, 42, 0.9), rgba(26, 45, 63, 0.9));
     animation: fadeIn 1s ease-in;
-}
-
-.subtitle {
+  }
+  
+  .subtitle {
     font-size: 18px;
     color: #A0AEC0;
     margin: 10px 0;
-}
-
-.canvas-container {
+  }
+  
+  .canvas-container {
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 100%;
-    height: 400px;
+    width: auto;
+    height: auto;
     margin: 0 auto;
-}
-
-#three-canvas {
+    padding: 20px;
+  }
+  
+  #three-canvas {
     width: 400px !important;
     height: 400px !important;
     display: block;
     border-radius: 12px;
-}
-
-.about, .how-to-buy, .contacts, .chart-section {
+  }
+  
+  .about, .how-to-buy, .contacts, .chart-section {
     padding: 80px 20px;
-    margin: 40px 0;
+    margin: 40px auto;
     border-radius: 12px;
-}
-
-.contacts form {
+    max-width: 1200px;
+  }
+  
+  .contacts form {
     display: flex;
     flex-direction: column;
     gap: 15px;
     align-items: center;
-}
-
-.contacts input {
+  }
+  
+  .contacts input {
     padding: 12px;
     width: 80%;
     max-width: 400px;
@@ -120,140 +140,137 @@ nav a, .buy-button {
     border: 1px solid rgba(0, 255, 204, 0.3);
     color: #fff;
     border-radius: 6px;
-}
-
-.contacts button {
+  }
+  
+  .contacts button {
     padding: 12px 24px;
     background: linear-gradient(45deg, #00FFCC, #00CCFF);
     border: none;
     cursor: pointer;
     transition: all 0.3s ease;
     border-radius: 8px;
-}
-
-.contacts button:hover {
+  }
+  
+  .contacts button:hover {
     transform: scale(1.05);
     box-shadow: 0 0 25px rgba(0, 255, 204, 0.5);
-}
-
-.gecko-iframe-container {
+  }
+  
+  .gecko-iframe-container {
     width: 100%;
     height: 600px;
     border-radius: 12px;
     overflow: hidden;
     margin: 20px 0;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-}
-
-#geckoterminal-embed {
+  }
+  
+  #geckoterminal-embed {
     width: 100%;
     height: 100%;
     border: none;
     background: rgba(0, 0, 0, 0.5);
-}
-
-footer {
+  }
+  
+  footer {
     padding: 20px;
     margin-top: auto;
     border-bottom: none;
-}
-
-h1, h2, p {
+  }
+  
+  h1, h2, p {
     font-family: 'Muli', sans-serif;
     letter-spacing: 0.05rem;
-}
-
-h1 {
+  }
+  
+  h1 {
     font-size: 48px;
     font-weight: 700;
-}
-
-h2 {
+  }
+  
+  h2 {
     font-size: 32px;
     font-weight: 700;
-}
-
-p {
+  }
+  
+  p {
     font-size: 18px;
     font-weight: 400;
     line-height: 1.6;
-}
-
-/* Стили для кнопки мобильного меню */
-.menu-toggle {
+  }
+  
+  /* Кнопка мобильного меню – скрыта на desktop */
+  .menu-toggle {
     display: none;
     background: none;
     border: none;
     color: #00FFCC;
     font-size: 24px;
     cursor: pointer;
-}
-
-@media (max-width: 768px) {
+  }
+  
+  /* Mobile стили */
+  @media (max-width: 768px) {
+    header {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 10px;
+    }
+    .header-left, .header-center, .header-right {
+      width: 100%;
+    }
+    .header-left {
+      text-align: left;
+    }
+    .header-center {
+      text-align: center;
+      margin: 10px 0;
+    }
+    .header-right {
+      text-align: right;
+    }
+    .menu-toggle {
+      display: block;
+    }
+    /* По умолчанию навигация скрыта */
+    header nav {
+      display: none;
+      width: 100%;
+    }
+    /* При активном состоянии header навигация отображается */
+    header.active nav {
+      display: block;
+    }
+    header.active nav ul {
+      flex-direction: column;
+      gap: 10px;
+    }
+    /* Корректируем размеры для canvas */
+    .canvas-container {
+      height: 300px;
+    }
+    #three-canvas {
+      width: 300px !important;
+      height: 300px !important;
+    }
     h1 { font-size: 32px; }
     h2 { font-size: 24px; }
     p { font-size: 16px; }
-    
-    header {
-        flex-direction: column;
-        padding: 10px;
-    }
-    
-    nav ul {
-        flex-direction: column;
-        gap: 10px;
-        
-    }
-
-    .canvas-container {
-        width: 100%;
-        height: 300px;
-    }
-
-    #three-canvas {
-        width: 300px !important;
-        height: 300px !important;
-    }
-
     .hero, .about, .how-to-buy, .contacts, .chart-section {
-        padding: 40px 10px;
+      padding: 40px 10px;
     }
-
     .buy-button {
-        padding: 10px 20px;
+      padding: 10px 20px;
     }
-
-    /* Отображаем кнопку меню */
-    .menu-toggle {
-        display: block;
-    }
-
-    /* По умолчанию скрываем навигацию и кнопку "Купить IF" */
-    header nav,
-    header .buy-button {
-        display: none;
-    }
-
-    /* При активном состоянии header показываем навигацию и кнопку "Купить IF" */
-    header.active nav,
-    header.active .buy-button {
-        display: block;
-        margin-top: 10px;
-    }
-
-    /* Вывод навигационного списка в столбик */
-    header.active nav ul {
-        flex-direction: column;
-        gap: 10px;
-    }
-}
-
-/* Добавляем нижний отступ для основного контейнера, чтобы последний блок не обрезался */
-main {
+  }
+  
+  /* Добавляем нижний отступ для main */
+  main {
     padding-bottom: 120px;
-}
-
-/* Убираем нижнюю границу у последнего раздела внутри main */
-main section:last-child {
+  }
+  
+  /* Убираем нижнюю границу у последнего раздела */
+  main section:last-child {
     border-bottom: none;
-}
+  }
