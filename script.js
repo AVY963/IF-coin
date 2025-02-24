@@ -128,7 +128,7 @@ document.addEventListener('mousemove', (e) => {
     document.body.style.backgroundPosition = `${xPercent}% ${yPercent}%`;
 });
 
-// Обработчик кликов для навигационных ссылок
+// Плавный скролл при клике по навигационным ссылкам
 document.querySelectorAll('header nav a, footer nav a').forEach(link => {
   link.addEventListener('click', function(e) {
       e.preventDefault();
@@ -147,12 +147,13 @@ document.querySelectorAll('header nav a, footer nav a').forEach(link => {
   });
 });
 
-// Функционал для мобильного меню: переключаем класс active у header
+// Функционал для мобильного меню
 const menuToggle = document.querySelector('.menu-toggle');
 const header = document.querySelector('header');
 
 if (menuToggle) {
     menuToggle.addEventListener('click', () => {
+        console.log('click');
         header.classList.toggle('active');
     });
 }

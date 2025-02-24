@@ -16,17 +16,16 @@ body {
     100% { background-position: 0% 50%; }
   }
   
-  /* Секции */
+  /* Общий фон для секций */
   header, footer, .hero, .about, .how-to-buy, .contacts, .chart-section {
     background: rgba(0, 0, 0, 0.7);
     backdrop-filter: blur(10px);
     border-bottom: 1px solid rgba(0, 255, 204, 0.1);
   }
   
-  /* Header desktop: используем grid с тремя колонками */
+  /* --- HEADER (Desktop) --- */
   header {
-    display: grid;
-    grid-template-columns: auto 1fr auto;
+    display: flex;
     align-items: center;
     padding: 20px;
     position: sticky;
@@ -34,20 +33,18 @@ body {
     z-index: 100;
   }
   
-  .header-left {
+  .header-left, .header-center, .header-right {
     display: flex;
     align-items: center;
+    gap: 20px;
+    width: 100%;
   }
   
   .header-center {
-    text-align: center;
+    justify-content: center;
   }
-  
   .header-right {
-    display: flex;
-    align-items: center;
     justify-content: flex-end;
-    gap: 20px;
   }
   
   .logo {
@@ -85,6 +82,17 @@ body {
     box-shadow: 0 0 25px rgba(0, 255, 204, 0.5);
   }
   
+  /* Кнопка "гамбургер" по умолчанию скрыта на десктопе */
+  .menu-toggle {
+    display: none;
+    background: none;
+    border: none;
+    color: #00FFCC;
+    font-size: 24px;
+    cursor: pointer;
+  }
+  
+  /* --- HERO --- */
   .hero {
     padding: 80px 20px;
     display: flex;
@@ -105,8 +113,6 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    width: auto;
-    height: auto;
     margin: 0 auto;
     padding: 20px;
   }
@@ -118,6 +124,7 @@ body {
     border-radius: 12px;
   }
   
+  /* --- SECTIONS --- */
   .about, .how-to-buy, .contacts, .chart-section {
     padding: 80px 20px;
     margin: 40px auto;
@@ -125,6 +132,7 @@ body {
     max-width: 1200px;
   }
   
+  /* --- CONTACTS FORM --- */
   .contacts form {
     display: flex;
     flex-direction: column;
@@ -156,6 +164,7 @@ body {
     box-shadow: 0 0 25px rgba(0, 255, 204, 0.5);
   }
   
+  /* --- CHART --- */
   .gecko-iframe-container {
     width: 100%;
     height: 600px;
@@ -172,12 +181,14 @@ body {
     background: rgba(0, 0, 0, 0.5);
   }
   
+  /* --- FOOTER --- */
   footer {
     padding: 20px;
     margin-top: auto;
     border-bottom: none;
   }
   
+  /* --- TEXT --- */
   h1, h2, p {
     font-family: 'Muli', sans-serif;
     letter-spacing: 0.05rem;
@@ -199,73 +210,89 @@ body {
     line-height: 1.6;
   }
   
-  /* Кнопка мобильного меню – скрыта на desktop */
-  .menu-toggle {
-    display: none;
-    background: none;
-    border: none;
-    color: #00FFCC;
-    font-size: 24px;
-    cursor: pointer;
-  }
-  
-  /* Mobile стили */
+  /* --- MOBILE (max-width: 768px) --- */
   @media (max-width: 768px) {
+  
+    /* Переключаемся на flex для упрощённого расположения */
     header {
+        display: flex;
+        flex-direction: row;
+        align-items: flex-start;
+        justify-content: space-between;
+      padding: 10px;
+    }
+  
+    /* Верхняя часть: logo, buy-button и гамбургер на одной строке */
+    .header-left {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    /* Скрываем кнопку купить на мобильном */
+    .header-right .buy-button {
+        display: none;
+      }
+  
+    /* Показываем гамбургер на мобильном */
+    .header-right  {
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        width: 100%;
+        padding: 0;
+    }
+    .menu-toggle {
+        display: block;
+    }
+    
+    /* Скрываем центр по умолчанию */
+    .header-center {
+      display: none;
+      width: 100%;
+      margin-top: 10px;
+    }
+    /* При клике (header.active) отображаем меню */
+    header.active .header-center {
       display: flex;
       flex-direction: column;
       align-items: center;
-      padding: 10px;
-    }
-    .header-left, .header-center, .header-right {
+      justify-content: center;
       width: 100%;
-    }
-    .header-left {
-      text-align: left;
-    }
-    .header-center {
-      text-align: center;
-      margin: 10px 0;
-    }
-    .header-right {
-      text-align: right;
-    }
-    .menu-toggle {
-      display: block;
-    }
-    /* По умолчанию навигация скрыта */
-    header nav {
-      display: none;
-      width: 100%;
-    }
-    /* При активном состоянии header навигация отображается */
-    header.active nav {
-      display: block;
     }
     header.active nav ul {
+      display: flex;
       flex-direction: column;
+      align-items: center;
       gap: 10px;
     }
-    /* Корректируем размеры для canvas */
+  
+    /* Корректируем размеры холста */
     .canvas-container {
-      height: 300px;
+      padding: 10px;
     }
     #three-canvas {
       width: 300px !important;
       height: 300px !important;
     }
+  
+    /* Уменьшаем шрифты */
     h1 { font-size: 32px; }
     h2 { font-size: 24px; }
     p { font-size: 16px; }
+  
+    /* Уменьшаем отступы в секциях */
     .hero, .about, .how-to-buy, .contacts, .chart-section {
       padding: 40px 10px;
     }
+  
     .buy-button {
       padding: 10px 20px;
     }
   }
   
-  /* Добавляем нижний отступ для main */
+  /* Добавляем нижний отступ для основного контейнера */
   main {
     padding-bottom: 120px;
   }
@@ -273,4 +300,10 @@ body {
   /* Убираем нижнюю границу у последнего раздела */
   main section:last-child {
     border-bottom: none;
+  }
+  
+  /* Анимация для .hero (просто пример) */
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to   { opacity: 1; }
   }
